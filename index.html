@@ -1,11 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login Page</title>
+
+    <!-- font awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- daisyUI and tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+
+
+    <!-- google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Geist:wght@100..900&display=swap" rel="stylesheet">
+
+    <!-- stylesheet -->
+
+    <link rel="stylesheet" href="./style/style.css">
+
+
 </head>
-<body>
-    
+
+<body class="bg-base-200 min-h-screen flex items-center justify-center font-[Geist]">
+
+    <div class="card w-[420px] bg-base-100 shadow-xl p-6">
+
+        <!-- Logo + Title -->
+        <div class="text-center space-y-3">
+            <img src="./assets/github-logo.png" class="w-16 mx-auto" alt="">
+            <h2 class="text-xl font-semibold">GitHub Issues Tracker</h2>
+            <p class="text-sm text-gray-500">Sign in to manage your issues</p>
+        </div>
+
+        <!-- Form -->
+        <div class="card-body p-0 mt-4">
+
+            <fieldset class="fieldset">
+
+                <!-- Username -->
+                <label class="label">Username</label>
+                <input type="text" class="input input-bordered w-full" placeholder="Enter Username" />
+                <p class="text-purple-600 text-xs">Default: admin</p>
+
+                <!-- Password -->
+                <label class="label mt-2">Password</label>
+                <input type="password" class="input input-bordered w-full" placeholder="Enter Password" />
+                <p class="text-purple-600 text-xs">Default: admin123</p>
+
+                <!-- Button -->
+                <button class="btn mt-4 text-white border-none 
+                bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90">
+                    Sign In
+                </button>
+
+            </fieldset>
+
+            <!-- Divider -->
+            <div class="divider">OR</div>
+
+            <!-- Demo credentials -->
+            <div class="bg-base-200 rounded-lg p-4 text-center text-sm">
+                <p class="text-gray-500 mb-2">Demo Credentials:</p>
+                <p><b>Username:</b> admin</p>
+                <p><b>Password:</b> admin123</p>
+            </div>
+
+        </div>
+
+    </div>
+
 </body>
+
 </html>
