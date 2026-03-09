@@ -233,23 +233,23 @@ async function openModal(id) {
 
         if (l === "bug") {
             labelsContainer.innerHTML += `
-<span class="flex items-center gap-1 border border-red-300 text-red-500 bg-red-100 px-3 py-1 rounded-full text-xs uppercase">
-<i class="fa-solid fa-bug"></i> BUG
-</span>`
+        <span class="flex items-center gap-1 border border-red-300 text-red-500 bg-red-100 px-3 py-1 rounded-full text-xs uppercase">
+        <i class="fa-solid fa-bug"></i> BUG
+        </span>`
         }
 
         if (l === "help wanted") {
             labelsContainer.innerHTML += `
-<span class="flex items-center gap-1 border border-yellow-400 text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full text-xs uppercase">
-<i class="fa-solid fa-life-ring"></i> HELP WANTED
-</span>`
+        <span class="flex items-center gap-1 border border-yellow-400 text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full text-xs uppercase">
+        <i class="fa-solid fa-life-ring"></i> HELP WANTED
+        </span>`
         }
 
         if (l === "enhancement") {
             labelsContainer.innerHTML += `
-<span class="flex items-center gap-1 border bg-green-100 border-green-400 text-green-600 px-3 py-1 rounded-full text-xs uppercase">
-<i class="fa-solid fa-arrow-up-right-dots"></i> ENHANCEMENT
-</span>`
+        <span class="flex items-center gap-1 border bg-green-100 border-green-400 text-green-600 px-3 py-1 rounded-full text-xs uppercase">
+        <i class="fa-solid fa-arrow-up-right-dots"></i> ENHANCEMENT
+        </span>`
         }
 
     })
