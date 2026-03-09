@@ -54,54 +54,54 @@ function displayIssues(issues) {
         if (issue.priority === "high") {
             priorityBadge =
                 `<span class="bg-red-100 text-red-500 px-4 py-1 rounded-full text-xs font-semibold uppercase">
-        HIGH
-        </span>`
+                HIGH
+                 </span>`
         }
         else if (issue.priority === "medium") {
             priorityBadge =
                 `<span class="bg-yellow-100 text-yellow-600 px-4 py-1 rounded-full text-xs font-semibold uppercase">
-        MEDIUM
-        </span>`
+                MEDIUM
+                </span>`
         }
         else {
             priorityBadge =
                 `<span class="bg-gray-200 text-gray-600 px-4 py-1 rounded-full text-xs font-semibold uppercase">
-        LOW
-        </span>`
+                LOW
+                 </span>`
         }
 
         /* -------- LABEL BADGES -------- */
 
-let badges = ""
+        let badges = ""
 
-const labels = issue.labels || []
+        const labels = issue.labels || []
 
-labels.forEach(label => {
+        labels.forEach(label => {
 
-const l = label.toLowerCase()
+            const l = label.toLowerCase()
 
-if(l === "bug"){
-badges += `
-<span class="border border-red-300 bg-red-100 text-red-500 px-3 py-1 rounded-full text-xs uppercase">
-<i class="fa-solid fa-bug"></i> BUG
-</span>`
-}
+            if (l === "bug") {
+                badges += `
+            <span class="border border-red-300 bg-red-100 text-red-500 px-3 py-1 rounded-full text-xs uppercase">
+            <i class="fa-solid fa-bug"></i> BUG
+            </span>`
+            }
 
-if(l === "help wanted"){
-badges += `
-<span class="border border-yellow-600 bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs uppercase">
-<i class="fa-solid fa-life-ring"></i> HELP WANTED
-</span>`
-}
+            if (l === "help wanted") {
+                badges += `
+            <span class="border border-yellow-600 bg-yellow-100 text-yellow-600 px-3 py-1 rounded-full text-xs uppercase">
+            <i class="fa-solid fa-life-ring"></i> HELP WANTED
+            </span>`
+            }
 
-if(l === "enhancement"){
-badges += `
-<span class="border border-green-400 bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs uppercase">
-<i class="fa-solid fa-arrow-up-right-dots"></i> ENHANCEMENT
-</span>`
-}
+            if (l === "enhancement") {
+                badges += `
+            <span class="border border-green-400 bg-green-100 text-green-600 px-3 py-1 rounded-full text-xs uppercase">
+            <i class="fa-solid fa-arrow-up-right-dots"></i> ENHANCEMENT
+            </span>`
+            }
 
-})
+        })
 
         /* -------- CARD HTML -------- */
 
@@ -162,101 +162,101 @@ badges += `
 
 /* ---------------- OPEN MODAL ---------------- */
 
-async function openModal(id){
+async function openModal(id) {
 
-const res = await fetch(
-`https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
-)
+    const res = await fetch(
+        `https://phi-lab-server.vercel.app/api/v1/lab/issue/${id}`
+    )
 
-const data = await res.json()
+    const data = await res.json()
 
-const issue = data.data
+    const issue = data.data
 
-/* ---------- TITLE + DESCRIPTION ---------- */
+    /* ---------- TITLE + DESCRIPTION ---------- */
 
-document.getElementById("modalTitle").innerText = issue.title
-document.getElementById("modalDesc").innerText = issue.description
+    document.getElementById("modalTitle").innerText = issue.title
+    document.getElementById("modalDesc").innerText = issue.description
 
-/* ---------- AUTHOR + DATE ---------- */
+    /* ---------- AUTHOR + DATE ---------- */
 
-document.getElementById("modalAuthor").innerText = issue.author
-document.getElementById("modalAuthorTop").innerText = issue.author
-document.getElementById("modalDate").innerText =
-new Date(issue.createdAt).toLocaleDateString()
+    document.getElementById("modalAuthor").innerText = issue.author
+    document.getElementById("modalAuthorTop").innerText = issue.author
+    document.getElementById("modalDate").innerText =
+        new Date(issue.createdAt).toLocaleDateString()
 
-/* ---------- STATUS BADGE ---------- */
+    /* ---------- STATUS BADGE ---------- */
 
-const status = document.getElementById("modalStatus")
+    const status = document.getElementById("modalStatus")
 
-status.innerText = issue.status.toUpperCase()
+    status.innerText = issue.status.toUpperCase()
 
-if(issue.status === "open"){
-status.className =
-"px-3 py-1 rounded-full text-white text-xs font-semibold bg-green-500"
-}
-else{
-status.className =
-"px-3 py-1 rounded-full text-white text-xs font-semibold bg-purple-500"
-}
+    if (issue.status === "open") {
+        status.className =
+            "px-3 py-1 rounded-full text-white text-xs font-semibold bg-green-500"
+    }
+    else {
+        status.className =
+            "px-3 py-1 rounded-full text-white text-xs font-semibold bg-purple-500"
+    }
 
-/* ---------- PRIORITY BADGE ---------- */
+    /* ---------- PRIORITY BADGE ---------- */
 
-const priority = document.getElementById("modalPriority")
+    const priority = document.getElementById("modalPriority")
 
-priority.innerText = issue.priority.toUpperCase()
+    priority.innerText = issue.priority.toUpperCase()
 
-if(issue.priority === "high"){
-priority.className =
-"px-3 py-1 rounded-full text-white text-xs bg-red-500"
-}
+    if (issue.priority === "high") {
+        priority.className =
+            "px-3 py-1 rounded-full text-white text-xs bg-red-500"
+    }
 
-if(issue.priority === "medium"){
-priority.className =
-"px-3 py-1 rounded-full text-white text-xs bg-yellow-500"
-}
+    if (issue.priority === "medium") {
+        priority.className =
+            "px-3 py-1 rounded-full text-white text-xs bg-yellow-500"
+    }
 
-if(issue.priority === "low"){
-priority.className =
-"px-3 py-1 rounded-full text-white text-xs bg-gray-500"
-}
+    if (issue.priority === "low") {
+        priority.className =
+            "px-3 py-1 rounded-full text-white text-xs bg-gray-500"
+    }
 
-/* ---------- LABEL BADGES ---------- */
+    /* ---------- LABEL BADGES ---------- */
 
-const labelsContainer = document.getElementById("modalLabels")
-labelsContainer.innerHTML = ""
+    const labelsContainer = document.getElementById("modalLabels")
+    labelsContainer.innerHTML = ""
 
-const labels = issue.labels || []
+    const labels = issue.labels || []
 
-labels.forEach(label => {
+    labels.forEach(label => {
 
-const l = label.toLowerCase()
+        const l = label.toLowerCase()
 
-if(l === "bug"){
-labelsContainer.innerHTML += `
+        if (l === "bug") {
+            labelsContainer.innerHTML += `
 <span class="flex items-center gap-1 border border-red-300 text-red-500 bg-red-100 px-3 py-1 rounded-full text-xs uppercase">
 <i class="fa-solid fa-bug"></i> BUG
 </span>`
-}
+        }
 
-if(l === "help wanted"){
-labelsContainer.innerHTML += `
+        if (l === "help wanted") {
+            labelsContainer.innerHTML += `
 <span class="flex items-center gap-1 border border-yellow-400 text-yellow-600 bg-yellow-100 px-3 py-1 rounded-full text-xs uppercase">
 <i class="fa-solid fa-life-ring"></i> HELP WANTED
 </span>`
-}
+        }
 
-if(l === "enhancement"){
-labelsContainer.innerHTML += `
+        if (l === "enhancement") {
+            labelsContainer.innerHTML += `
 <span class="flex items-center gap-1 border bg-green-100 border-green-400 text-green-600 px-3 py-1 rounded-full text-xs uppercase">
 <i class="fa-solid fa-arrow-up-right-dots"></i> ENHANCEMENT
 </span>`
-}
+        }
 
-})
+    })
 
-/* ---------- OPEN MODAL call ---------- */
+    /* ---------- OPEN MODAL call ---------- */
 
-issueModal.showModal()
+    issueModal.showModal()
 
 }
 
