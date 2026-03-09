@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Issues Dashboard</title>
+
+<link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet"/>
+<script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+<script>
+if(!localStorage.getItem("loggedIn")){
+  window.location.href = "index.html"
+}
+</script>
+
+</head>
+
+<body class="bg-base-200 p-6">
+
+<!-- NAVBAR -->
+
+<div class="navbar bg-base-100 shadow rounded-xl">
+
+<div class="max-w-7xl mx-auto w-full flex justify-between">
+
+<div class="flex items-center gap-2">
+  <img src="./assets/github-logo.png" alt="" class="w-8 h-8">
+  <a class="text-xl font-bold">GitHub Issues Tracker</a>
+</div>
+
+<div class="flex gap-2">
+
+<input
+id="searchInput"
+type="text"
+placeholder="Search issues..."
+class="input input-bordered w-64"
+/>
+
+<button onclick="searchIssue()" class="btn btn-primary">
++ New Issue
+
+</button>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- TABS -->
+<div class="max-w-7xl mx-auto mt-6 gap-2">
+  <div class="tabs tabs-boxed bg-base-100 p-1 w-fit shadow">
+
+    <a href="#" class="tab bg-base-100 text-base-content border border-base-300 active
+       hover:bg-primary hover:text-white hover:border-primary"
+       onclick="setActiveTab(this); loadIssues()">All</a>
+
+    <a href="#" class="tab bg-base-100 text-base-content border border-base-300
+       hover:bg-primary hover:text-white hover:border-primary"
+       onclick="setActiveTab(this); loadOpen()">Open</a>
+
+    <a href="#" class="tab bg-base-100 text-base-content border border-base-300
+       hover:bg-primary hover:text-white hover:border-primary"
+       onclick="setActiveTab(this); loadClosed()">Closed</a>
+
+  </div>
+</div>
+
+<!-- ISSUE COUNT -->
+
+<div
+class="max-w-7xl mx-auto mt-4 flex justify-between items-center
+bg-base-100 p-6 rounded-xl shadow">
+
+<div class="flex gap-2">
+    <img src="./assets/Aperture.png" class="rounded-full p-2 bg-purple-100" alt="">
+<div>
+<h3 class="text-lg font-semibold">
+
+<span id="issueCount">0</span> Issues
+</h3>
+
+<p class="text-sm text-gray-500">
+Track and manage your project issues
+</p>
+
+</div>
+</div>
+
+<div class="flex gap-4 text-sm">
+
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 bg-green-500 rounded-full"></div>
+Open
+</div>
+
+<div class="flex items-center gap-1">
+<div class="w-3 h-3 bg-purple-500 rounded-full"></div>
+Closed
+</div>
+
+</div>
+
+</div>
+
+
+<!-- LOADING SPINNER -->
+
+<div id="spinner" class="flex justify-center mt-10 hidden">
+<span class="loading loading-spinner loading-lg"></span>
+</div>
+
+
+<!-- ISSUE GRID -->
+
+<div id="issuesContainer"
+class="max-w-7xl mx-auto mt-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+</div>
+
+
+<!-- MODAL -->
+
+<dialog id="issueModal" class="modal">
+
+<div class="modal-box max-w-2xl">
+
+<!-- TITLE -->
+<h2 id="modalTitle" class="text-2xl font-bold mb-3"></h2>
+
+<!-- STATUS + AUTHOR -->
+<div class="flex items-center gap-3 text-sm text-gray-500 mb-4">
+
+<span id="modalStatus"
+class="px-3 py-1 rounded-full text-white text-xs font-semibold bg-green-500">
+OPEN
+</span>
+
+<span>• Opened by <b id="modalAuthorTop"></b></span>
+
+<span>• <span id="modalDate"></span></span>
+
+</div>
+
+<!-- LABELS -->
+<div id="modalLabels" class="flex gap-2 mb-4"></div>
+
+<!-- DESCRIPTION -->
+<p id="modalDesc" class="text-gray-600 mb-6"></p>
+
+<!-- ASSIGNEE + PRIORITY -->
+<div class="flex justify-between items-center border-t pt-4">
+
+<div>
+<p class="text-sm text-gray-500">Assignee:</p>
+<p id="modalAuthor" class="font-semibold"></p>
+</div>
+
+<div>
+<p class="text-sm text-gray-500">Priority:</p>
+<span id="modalPriority"
+class="px-3 py-1 rounded-full text-white text-xs bg-red-500">
+HIGH
+</span>
+</div>
+
+</div>
+
+<!-- BUTTON -->
+<div class="modal-action">
+<button onclick="issueModal.close()"
+class="btn bg-gradient-to-r from-purple-600 to-indigo-600 text-white border-none">
+Close
+</button>
+</div>
+
+</div>
+
+</dialog>
+
+<script src="./scripts/issues.js"></script>
+
+
+<!-- Tab Active Script -->
+<script>
+function setActiveTab(tab) {
+  const tabs = document.querySelectorAll(".tabs .tab");
+  tabs.forEach(t => {
+    // Reset all tabs to neutral
+    t.classList.remove("active", "bg-primary", "text-white", "border-primary");
+    t.classList.add("bg-base-100", "text-base-content", "border", "border-base-300");
+  });
+
+  // Set clicked tab to primary
+  tab.classList.add("active", "bg-primary", "text-white", "border-primary");
+}
+</script>
+
+</body>
+</html>

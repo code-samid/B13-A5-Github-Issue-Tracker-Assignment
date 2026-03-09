@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>GitHub Issues Tracker</title>
 
     <!-- font awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
@@ -47,16 +47,16 @@
 
                 <!-- Username -->
                 <label class="label">Username</label>
-                <input type="text" class="input input-bordered w-full" placeholder="Enter Username" />
+                <input id="username" type="text" class="input input-bordered w-full" placeholder="Enter Username">
                 <p class="text-purple-600 text-xs">Default: admin</p>
 
                 <!-- Password -->
                 <label class="label mt-2">Password</label>
-                <input type="password" class="input input-bordered w-full" placeholder="Enter Password" />
+                <input id="password" type="password" class="input input-bordered w-full" placeholder="Enter Password">
                 <p class="text-purple-600 text-xs">Default: admin123</p>
 
                 <!-- Button -->
-                <button class="btn mt-4 text-white border-none 
+                <button id="loginBtn" class="btn mt-4 text-white border-none 
                 bg-gradient-to-r from-purple-600 to-indigo-600 hover:opacity-90">
                     Sign In
                 </button>
@@ -76,7 +76,7 @@
         </div>
 
     </div>
-
+    <script src="./scripts/login.js"></script>
 </body>
 
 </html>
